@@ -1,0 +1,40 @@
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/today"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="#0055dd"
+        android:padding="8dp"
+        android:text="@string/today"
+        android:textColor="@android:color/white"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.jude.easyrecyclerview.EasyRecyclerView
+        android:id="@+id/content_list"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/today"
+        app:layout_empty="@layout/view_empty"
+        app:layout_error="@layout/view_error"
+        app:layout_progress="@layout/view_progress"
+        app:recyclerClipToPadding="true"
+        app:recyclerPadding="8dp"
+        app:recyclerPaddingBottom="8dp"
+        app:recyclerPaddingLeft="8dp"
+        app:recyclerPaddingRight="8dp"
+        app:recyclerPaddingTop="8dp"
+        app:scrollbarStyle="insideOverlay" />
+
+</android.support.constraint.ConstraintLayout>
