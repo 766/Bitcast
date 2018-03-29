@@ -22,19 +22,13 @@
         android:id="@+id/content_list"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:scrollbars="none"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/today"
         app:layout_empty="@layout/view_empty"
         app:layout_error="@layout/view_error"
-        app:layout_progress="@layout/view_progress"
-        app:recyclerClipToPadding="true"
-        app:recyclerPadding="8dp"
-        app:recyclerPaddingBottom="8dp"
-        app:recyclerPaddingLeft="8dp"
-        app:recyclerPaddingRight="8dp"
-        app:recyclerPaddingTop="8dp"
-        app:scrollbarStyle="insideOverlay" />
+        app:layout_progress="@layout/view_progress" />
 
 </android.support.constraint.ConstraintLayout>

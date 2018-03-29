@@ -33,4 +33,8 @@
         通过布局管理器LayoutManager可控制Item的布局方式，
         通过设置Item操作动画自定义Item添加和删除的动画，通过设置Item之间的间隔样式，自定义间隔</string>
     <string name="date_format">今天 MM月dd日</string>
+    <string name="load_more">更多加载中……</string>
+    <string name="network_error">网络错误,点击重试</string>
+    <string name="empty">暂无数据</string>
+    <string name="no_more">(*￣ω￣) 没有更多了</string>
 </resources>

@@ -9,6 +9,7 @@ package com.baidu.coin.bean;
 
 public class News {
     private String time;
+    private String title;
     private String content;
 
     public String getTime() {
@@ -17,6 +18,14 @@ public class News {
 
     public void setTime(String time) {
         this.time = time;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getContent() {
