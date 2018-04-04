@@ -1,4 +1,4 @@
-package com.baidu.coin.utils;
+package com.bitcast.app.utils;
 
 import java.util.Calendar;
 import java.util.Date;

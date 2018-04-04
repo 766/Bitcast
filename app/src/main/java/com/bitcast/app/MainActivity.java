@@ -1,4 +1,4 @@
-package com.baidu.coin;
+package com.bitcast.app;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,7 +11,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Window;
 
-import com.baidu.coin.fragment.HomeFragment;
+import com.bitcast.app.fragment.HomeFragment;
+import com.bitcast.app.fragment.SettingFragment;
 import com.jpeng.jptabbar.JPTabBar;
 import com.jpeng.jptabbar.anno.NorIcons;
 import com.jpeng.jptabbar.anno.SeleIcons;
@@ -40,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
     private JPTabBar mTabBar;
     private Toolbar mToolBar;
     private View mSearchView;
+    private Fragment[] fragments = new Fragment[3];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
     }
 
     private void initView() {
@@ -70,6 +73,9 @@ public class MainActivity extends AppCompatActivity {
         mToolBar.setTitle("");
         //设置导航图标要在setSupportActionBar方法之后
         setSupportActionBar(mToolBar);
+        fragments[0] = new HomeFragment();
+        fragments[1] = new SettingFragment();
+        fragments[2] = new SettingFragment();
     }
 
     private class ViewPagerAdapter extends FragmentStatePagerAdapter {
@@ -84,11 +90,7 @@ public class MainActivity extends AppCompatActivity {
          */
         @Override
         public Fragment getItem(int position) {
-            Bundle bundle = new Bundle();
-            bundle.putInt("position", position + 1);
-            HomeFragment fragment = new HomeFragment();
-            fragment.setArguments(bundle);
-            return fragment;
+            return fragments[position];
         }
 
         /**

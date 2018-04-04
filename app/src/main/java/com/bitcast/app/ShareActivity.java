@@ -1,4 +1,4 @@
-package com.baidu.coin;
+package com.bitcast.app;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -9,16 +9,16 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.baidu.coin.utils.DateUtil;
-import com.baidu.coin.utils.ScreenShot;
-import com.baidu.coin.utils.Week;
+import com.bitcast.app.bean.News;
+import com.bitcast.app.utils.DateUtil;
+import com.bitcast.app.utils.ScreenShot;
+import com.bitcast.app.utils.Week;
 import com.kakao.kakaolink.v2.KakaoLinkResponse;
 import com.kakao.kakaolink.v2.KakaoLinkService;
 import com.kakao.message.template.ButtonObject;
 import com.kakao.message.template.ContentObject;
 import com.kakao.message.template.FeedTemplate;
 import com.kakao.message.template.LinkObject;
-import com.kakao.message.template.SocialObject;
 import com.kakao.network.ErrorResult;
 import com.kakao.network.callback.ResponseCallback;
 import com.kakao.network.storage.ImageUploadResponse;
@@ -46,7 +46,12 @@ public class ShareActivity extends AppCompatActivity {
         mScrollView = findViewById(R.id.scrollView);
         TextView today = findViewById(R.id.today);
         today.setText(getCurrentDate());
+        TextView newsTitle = findViewById(R.id.news_title);
+        TextView newsContent = findViewById(R.id.content);
 
+        News news = getIntent().getParcelableExtra("news");
+        newsTitle.setText(news.getTitle());
+        newsContent.setText(news.getContent());
     }
 
 
@@ -91,7 +96,7 @@ public class ShareActivity extends AppCompatActivity {
                         .setDescrption("test description")
                         .build())
                 //.setSocial(SocialObject.newBuilder().setLikeCount(10).setCommentCount(20) //add 社交
-                        //.setSharedCount(30).setViewCount(40).build())
+                //.setSharedCount(30).setViewCount(40).build())
                 .addButton(new ButtonObject("详细信息", LinkObject.newBuilder().setWebUrl("https://developers.kakao.com").setMobileWebUrl("https://developers.kakao.com").build()))
                 .addButton(new ButtonObject("获取APP", LinkObject.newBuilder()
                         .setWebUrl("'https://developers.kakao.com")

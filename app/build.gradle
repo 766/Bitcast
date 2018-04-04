@@ -4,7 +4,7 @@ android {
     compileSdkVersion 27
     buildToolsVersion "27.0.3"
     defaultConfig {
-        applicationId "com.baidu.bitcast"
+        applicationId "com.bitcast.app"
         minSdkVersion 19
         targetSdkVersion 27
         versionCode 1
@@ -15,6 +15,18 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+configurations.all {
+
+    resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+        def requested = details.requested
+        if (requested.group == 'com.android.support') {
+            if (!requested.name.startsWith("multidex")) {
+                details.useVersion '27.1.0'//默认使用的版本
+            }
         }
     }
 }
@@ -35,7 +47,14 @@ dependencies {
     implementation 'com.github.mancj:MaterialSearchBar:0.7.6'
     implementation 'cn.carbs.android:ExpandableTextView:1.0.3'
     implementation 'com.anthonycr.grant:permissions:1.0'
+    implementation 'ch.ielse:switchbutton:1.0.1'
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-3'
     // 카카오링크 sdk를 사용하기 위해 필요.
     implementation group: project.KAKAO_SDK_GROUP, name: 'kakaolink', version: project.KAKAO_SDK_VERSION
-    implementation 'com.jude:easyrecyclerview:4.4.2'
+    //Google push
+    implementation 'com.google.firebase:firebase-core:12.0.1'
+    implementation 'com.google.firebase:firebase-messaging:12.0.1'
+    implementation 'com.firebase:firebase-jobdispatcher:0.5.2'
+
 }
+apply plugin: 'com.google.gms.google-services'

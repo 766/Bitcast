@@ -1,13 +1,15 @@
-package com.baidu.coin.holder;
+package com.bitcast.app.holder;
 
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.baidu.coin.R;
-import com.baidu.coin.bean.News;
-import com.jude.easyrecyclerview.adapter.BaseViewHolder;
+import com.bitcast.app.R;
+import com.bitcast.app.adapter.BaseViewHolder;
+import com.bitcast.app.bean.News;
+
+import cn.carbs.android.expandabletextview.library.ExpandableTextView;
 
 /**
  * Created by KangWei on 2018-03-29.
@@ -15,13 +17,13 @@ import com.jude.easyrecyclerview.adapter.BaseViewHolder;
  * Coin
  * com.baidu.coin.holder
  */
-public class NewsViewHolder extends BaseViewHolder<News> {
+public abstract class NewsViewHolder extends BaseViewHolder<News> {
     private final TextView newsTitle;
-    private final TextView newsContent;
+    private final ExpandableTextView newsContent;
     private final TextView newsTime;
     private final View shareBtn;
 
-    public NewsViewHolder(ViewGroup parent) {
+    protected NewsViewHolder(ViewGroup parent) {
         super(parent, R.layout.view_rv_item);
         newsTitle = $(R.id.news_title);
         newsTime = $(R.id.time);
@@ -35,9 +37,18 @@ public class NewsViewHolder extends BaseViewHolder<News> {
         newsTime.setText(news.getTime());
         newsTitle.setText(news.getTitle());
         newsContent.setText(news.getContent());
+        shareBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                handleEvent(news);
+            }
+        });
     }
 
-    public View getShareButton() {
-        return shareBtn;
+    @Override
+    public void cleanView() {
+        newsContent.updateForRecyclerView("", newsContent.getWidth(), ExpandableTextView.STATE_SHRINK);
     }
+
+    protected abstract void handleEvent(News news);
 }

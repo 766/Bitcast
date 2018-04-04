@@ -1,4 +1,4 @@
-package com.baidu.coin;
+package com.bitcast.app;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
